@@ -24,3 +24,18 @@
   margin-top: var(--space-6);
   color: var(--color-text-muted);
 }
+
+.home__link {
+  justify-self: start;
+  margin-top: var(--space-8);
+  padding: var(--space-3) var(--space-6);
+  border-radius: 999px;
+  color: var(--color-surface);
+  font-weight: 700;
+  text-decoration: none;
+  background: var(--color-primary);
+}
+
+.home__link:hover {
+  background: var(--color-primary-dark);
+}

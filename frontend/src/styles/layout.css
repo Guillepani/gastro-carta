@@ -7,8 +7,17 @@
   min-height: 100vh;
 }
 
+.menu-container {
+  width: min(100% - (var(--space-4) * 2), var(--menu-content-width));
+  margin-inline: auto;
+}
+
 @media (min-width: 48rem) {
   .container {
     width: min(100% - (var(--space-8) * 2), var(--content-width));
+  }
+
+  .menu-container {
+    width: min(100% - (var(--space-8) * 2), var(--menu-content-width));
   }
 }

@@ -1,0 +1,74 @@
+.feedback-state {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  min-height: 100vh;
+  padding: var(--space-8);
+  text-align: center;
+  background: var(--color-background);
+}
+
+.feedback-state__spinner {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: var(--space-4);
+  border: 3px solid var(--color-primary-soft);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.feedback-state__icon {
+  margin-bottom: var(--space-4);
+  font-size: 3rem;
+}
+
+.feedback-state h1 {
+  max-width: 18ch;
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  line-height: 1.05;
+}
+
+.feedback-state > p:not(.feedback-state__icon) {
+  max-width: 34rem;
+  margin-top: var(--space-4);
+  color: var(--color-text-muted);
+}
+
+.feedback-state__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+}
+
+.feedback-state button,
+.feedback-state a {
+  padding: var(--space-3) var(--space-6);
+  border: 1px solid var(--color-primary);
+  border-radius: 999px;
+  color: var(--color-primary);
+  font-weight: 700;
+  text-decoration: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.feedback-state button:hover,
+.feedback-state a:hover {
+  color: var(--color-surface);
+  background: var(--color-primary);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feedback-state__spinner {
+    animation: none;
+  }
+}

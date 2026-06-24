@@ -1,17 +1,15 @@
-import './styles/pages/home.css'
+import { Route, Routes } from 'react-router-dom'
+import HomePage from './pages/HomePage.jsx'
+import NotFoundPage from './pages/NotFoundPage.jsx'
+import PublicMenuPage from './pages/PublicMenuPage.jsx'
 
 function App() {
   return (
-    <main className="site-main">
-      <section className="home container" aria-labelledby="home-title">
-        <p className="home__eyebrow">Gastro Carta</p>
-        <h1 id="home-title">Tu carta digital empieza aquí</h1>
-        <p className="home__description">
-          La base del proyecto está preparada para construir una experiencia clara
-          en cualquier dispositivo.
-        </p>
-      </section>
-    </main>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/carta/:slug" element={<PublicMenuPage />} />
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
   )
 }
 

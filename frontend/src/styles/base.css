@@ -20,3 +20,13 @@ a {
 a {
   color: inherit;
 }
+
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+::selection {
+  color: var(--color-surface);
+  background: var(--color-primary);
+}
