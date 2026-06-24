@@ -1,0 +1,26 @@
+.home {
+  display: grid;
+  align-content: center;
+  min-height: 100vh;
+  padding-block: var(--space-12);
+}
+
+.home__eyebrow {
+  margin-bottom: var(--space-2);
+  color: var(--color-primary);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.home h1 {
+  max-width: 14ch;
+  font-size: clamp(2.25rem, 10vw, 4.5rem);
+  line-height: 1.05;
+}
+
+.home__description {
+  max-width: 42rem;
+  margin-top: var(--space-6);
+  color: var(--color-text-muted);
+}
