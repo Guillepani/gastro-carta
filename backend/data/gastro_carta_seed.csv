@@ -1,0 +1,141 @@
+﻿category,subcategory,name,description,price,allergens,isAvailable
+Almuerzos,Bocadillos y tostadas,Almuerzo popular,"Bocadillo mediano, bebida y café",8.50,gluten|sulfitos|lacteos,true
+Almuerzos,Bocadillos y tostadas,Bocadillo de almussafes,"Sobrasada, queso y cebolla caramelizada",6.50,gluten|lacteos|sulfitos,true
+Almuerzos,Bocadillos y tostadas,Bocadillo de anchoas,"Anchoas, tomate y aceite de oliva",6.70,gluten|pescado,true
+Almuerzos,Bocadillos y tostadas,Bocadillo de atún con olivas,"Atún, olivas y tomate en pan tostado",5.80,gluten|pescado,true
+Almuerzos,Bocadillos y tostadas,Bocadillo de bacon y queso,Bacon crujiente con queso fundido,5.90,gluten|lacteos,true
+Almuerzos,Bocadillos y tostadas,Bocadillo de brascada,"Ternera, jamón serrano y cebolla pochada",7.50,gluten|sulfitos,true
+Almuerzos,Bocadillos y tostadas,Bocadillo de calamares,Calamares fritos en pan con alioli suave,7.20,gluten|moluscos|huevos,true
+Almuerzos,Bocadillos y tostadas,Bocadillo de carne mechada,Carne mechada con salsa de la casa,6.80,gluten|apio|sulfitos,true
+Almuerzos,Bocadillos y tostadas,Bocadillo de chistorra,Chistorra a la plancha con aceite de oliva,5.90,gluten|sulfitos,true
+Almuerzos,Bocadillos y tostadas,Bocadillo de jamón serrano,Jamón serrano con tomate rallado y aceite,5.50,gluten,true
+Almuerzos,Bocadillos y tostadas,Bocadillo de lomo con queso,Lomo a la plancha con queso fundido,6.20,gluten|lacteos,true
+Almuerzos,Bocadillos y tostadas,Bocadillo de longanizas,Longanizas a la plancha con pan crujiente,5.80,gluten|sulfitos,true
+Almuerzos,Bocadillos y tostadas,Bocadillo de pechuga completa,"Pechuga, lechuga, tomate y mayonesa",6.50,gluten|huevos,true
+Almuerzos,Bocadillos y tostadas,Bocadillo de pollo al curry,Pollo especiado con salsa curry suave,6.40,gluten|mostaza|lacteos,true
+Almuerzos,Bocadillos y tostadas,Bocadillo de queso curado,Queso curado con tomate y aceite de oliva,5.20,gluten|lacteos,true
+Almuerzos,Bocadillos y tostadas,Bocadillo de secreto,Secreto de cerdo con pimientos verdes,7.40,gluten,true
+Almuerzos,Bocadillos y tostadas,Bocadillo de sepia,Sepia a la plancha con ajoaceite,7.80,gluten|moluscos|huevos,true
+Almuerzos,Bocadillos y tostadas,Bocadillo de sobrasada y queso,Sobrasada caliente con queso fundido,6.00,gluten|lacteos|sulfitos,true
+Almuerzos,Bocadillos y tostadas,Bocadillo de tortilla de patata,Tortilla de patata casera en pan tostado,5.50,gluten|huevos,true
+Almuerzos,Bocadillos y tostadas,Bocadillo de tortilla francesa,Pan crujiente con tortilla francesa recién hecha,4.80,gluten|huevos,true
+Almuerzos,Bocadillos y tostadas,Bocadillo vegetal,"Lechuga, tomate, huevo duro, atún y mayonesa",5.90,gluten|huevos|pescado,true
+Almuerzos,Bocadillos y tostadas,Café con tostada,Café con leche y tostada de tomate,3.90,gluten|lacteos,true
+Almuerzos,Bocadillos y tostadas,Croissant mixto,Croissant relleno de jamón york y queso,4.20,gluten|lacteos|huevos,true
+Almuerzos,Bocadillos y tostadas,Tostada de mantequilla y mermelada,Pan tostado con mantequilla y mermelada,3.00,gluten|lacteos,true
+Almuerzos,Bocadillos y tostadas,Tostada de tomate y aceite,Pan tostado con tomate natural y aceite de oliva,2.80,gluten,true
+Comidas,"Entrantes, arroces y principales",Arroz al horno,"Arroz tradicional con costilla, garbanzos y morcilla",12.00,sulfitos,true
+Comidas,"Entrantes, arroces y principales",Bravas de la casa,Patatas fritas con salsa brava y alioli,6.20,huevos|mostaza,true
+Comidas,"Entrantes, arroces y principales",Calamares a la romana,Calamares rebozados con limón,9.80,gluten|moluscos|huevos,true
+Comidas,"Entrantes, arroces y principales",Carrillada al vino tinto,Carrillada melosa con reducción de vino tinto,13.80,apio|sulfitos,true
+Comidas,"Entrantes, arroces y principales",Croquetas de boletus,Croquetas caseras de boletus y bechamel,7.20,gluten|lacteos|huevos,true
+Comidas,"Entrantes, arroces y principales",Croquetas de jamón,Croquetas cremosas de jamón ibérico,7.00,gluten|lacteos|huevos,true
+Comidas,"Entrantes, arroces y principales",Curry de verduras con cacahuete,Verduras al curry con salsa cremosa de cacahuete y arroz,10.50,cacahuetes|mostaza,true
+Comidas,"Entrantes, arroces y principales",Ensalada de cabra,"Brotes, queso de cabra, nueces y vinagreta",9.80,lacteos|frutos_secos|mostaza|sulfitos,true
+Comidas,"Entrantes, arroces y principales",Ensalada valenciana,"Lechuga, tomate, cebolla, huevo, atún y olivas",8.50,huevos|pescado,true
+Comidas,"Entrantes, arroces y principales",Ensaladilla rusa,"Patata, atún, huevo, mayonesa y encurtidos",6.50,huevos|pescado,true
+Comidas,"Entrantes, arroces y principales",Entrecot a la plancha,Entrecot con guarnición de patatas,18.50,,true
+Comidas,"Entrantes, arroces y principales",Fideuà de marisco,Fideo fino con marisco y alioli,14.80,gluten|crustaceos|moluscos|pescado|huevos,true
+Comidas,"Entrantes, arroces y principales",Gambas al ajillo,Gambas salteadas con ajo y guindilla,13.50,crustaceos|sulfitos,true
+Comidas,"Entrantes, arroces y principales",Hamburguesa clásica,"Ternera, lechuga, tomate, queso y salsa",10.80,gluten|lacteos|huevos|mostaza,true
+Comidas,"Entrantes, arroces y principales",Hamburguesa crujiente de pollo,"Pollo empanado, queso, lechuga y mayonesa",10.90,gluten|huevos|lacteos|mostaza,true
+Comidas,"Entrantes, arroces y principales",Lasaña de carne,Lasaña gratinada con bechamel,10.80,gluten|lacteos|huevos|apio,true
+Comidas,"Entrantes, arroces y principales",Mejillones al vapor,Mejillones frescos con limón,8.90,moluscos|sulfitos,true
+Comidas,"Entrantes, arroces y principales",Menú infantil nuggets,Nuggets de pollo con patatas,7.50,gluten|huevos,true
+Comidas,"Entrantes, arroces y principales",Merluza a la plancha,Merluza con verduras y patata cocida,13.20,pescado,true
+Comidas,"Entrantes, arroces y principales",Paella de marisco,"Arroz con gambas, mejillones, calamar y caldo marinero",15.50,crustaceos|moluscos|pescado|sulfitos,true
+Comidas,"Entrantes, arroces y principales",Paella valenciana,"Arroz con pollo, conejo, judía verde y garrofón",13.50,,true
+Comidas,"Entrantes, arroces y principales",Pan sin gluten de altramuz,Pan especial elaborado con harina de altramuz,3.20,altramuces,true
+Comidas,"Entrantes, arroces y principales",Pasta boloñesa,Pasta con salsa boloñesa casera,9.50,gluten|apio|sulfitos,true
+Comidas,"Entrantes, arroces y principales",Pasta carbonara,"Pasta con nata, bacon, huevo y queso",9.90,gluten|huevos|lacteos,true
+Comidas,"Entrantes, arroces y principales",Pechuga de pollo a la plancha,Pechuga con ensalada y patatas,10.90,,true
+Comidas,"Entrantes, arroces y principales",Pollo al curry con arroz,Pollo en salsa curry suave con arroz blanco,11.50,lacteos|mostaza,true
+Comidas,"Entrantes, arroces y principales",Salmón teriyaki,Salmón con salsa teriyaki y arroz,14.80,pescado|soja|sesamo|gluten,true
+Comidas,"Entrantes, arroces y principales",Secreto ibérico,Secreto a la plancha con patatas y pimientos,14.50,,true
+Comidas,"Entrantes, arroces y principales",Sepia a la plancha,Sepia con picada de ajo y perejil,12.50,moluscos,true
+Comidas,"Entrantes, arroces y principales",Tarta de queso,Tarta casera de queso con base de galleta,5.50,gluten|lacteos|huevos,true
+Comidas,"Entrantes, arroces y principales",Tellinas salteadas,"Tellinas con ajo, perejil y vino blanco",12.00,moluscos|sulfitos,true
+Comidas,"Entrantes, arroces y principales",Tomate trinchado con ventresca,Tomate natural con ventresca y aceite de oliva,10.50,pescado,true
+Cenas,"Tapas, pizzas y platos para compartir",Alitas barbacoa,Alitas de pollo con salsa barbacoa,8.20,mostaza|sulfitos,true
+Cenas,"Tapas, pizzas y platos para compartir",Brownie con helado,Brownie templado con helado de vainilla,5.90,gluten|huevos|lacteos|frutos_secos,true
+Cenas,"Tapas, pizzas y platos para compartir",Burger de altramuz,Hamburguesa vegetal con base de altramuz y especias,11.20,altramuces|gluten|soja,true
+Cenas,"Tapas, pizzas y platos para compartir",Burrata con pesto,"Burrata, tomate, pesto y aceite de oliva",10.90,lacteos|frutos_secos,true
+Cenas,"Tapas, pizzas y platos para compartir",Coca de anchoas,Coca fina con tomate y anchoas,9.80,gluten|pescado,true
+Cenas,"Tapas, pizzas y platos para compartir",Coca de verduras,Masa fina con verduras asadas,8.90,gluten,true
+Cenas,"Tapas, pizzas y platos para compartir",Edamame especiado,Edamame salteado con sal y especias,5.80,soja,true
+Cenas,"Tapas, pizzas y platos para compartir",Ensalada thai,"Brotes, pollo, cacahuetes y vinagreta oriental",9.50,cacahuetes|soja|sesamo,true
+Cenas,"Tapas, pizzas y platos para compartir",Falafel con salsa yogur,Falafel casero con salsa de yogur,8.20,sesamo|lacteos|gluten,true
+Cenas,"Tapas, pizzas y platos para compartir",Hamburguesa premium,"Ternera, cheddar, bacon, cebolla y salsa especial",12.50,gluten|lacteos|huevos|mostaza,true
+Cenas,"Tapas, pizzas y platos para compartir",Hamburguesa vegana,Burger vegetal con pan brioche y salsa vegana,11.50,gluten|soja|sesamo,true
+Cenas,"Tapas, pizzas y platos para compartir",Hummus con crudités,Hummus con verduras y pan pita,7.50,sesamo|gluten,true
+Cenas,"Tapas, pizzas y platos para compartir",Montadito de salmón,"Salmón ahumado, crema de queso y eneldo",5.50,gluten|pescado|lacteos,true
+Cenas,"Tapas, pizzas y platos para compartir",Montadito de sobrasada,"Sobrasada, miel y queso",4.80,gluten|lacteos|sulfitos,true
+Cenas,"Tapas, pizzas y platos para compartir",Montadito de solomillo,Solomillo con foie y cebolla caramelizada,5.90,gluten|sulfitos,true
+Cenas,"Tapas, pizzas y platos para compartir",Nachos completos,"Nachos con queso, guacamole, pico de gallo y jalapeños",9.80,lacteos,true
+Cenas,"Tapas, pizzas y platos para compartir",Pan bao de langostino,Bao con langostino crujiente y salsa cítrica,5.20,gluten|crustaceos|huevos,true
+Cenas,"Tapas, pizzas y platos para compartir",Pan bao de pulled pork,Bao relleno de cerdo desmechado y encurtidos,4.80,gluten|soja|sesamo,true
+Cenas,"Tapas, pizzas y platos para compartir",Patatas pulled pork,"Patatas con carne desmechada, queso y salsa",9.50,lacteos|mostaza|sulfitos,true
+Cenas,"Tapas, pizzas y platos para compartir",Pizza barbacoa,"Carne, bacon, queso y salsa barbacoa",11.20,gluten|lacteos|mostaza|sulfitos,true
+Cenas,"Tapas, pizzas y platos para compartir",Pizza cuatro quesos,Mezcla de quesos sobre base crujiente,10.80,gluten|lacteos,true
+Cenas,"Tapas, pizzas y platos para compartir",Pizza margarita,"Tomate, mozzarella y albahaca",9.50,gluten|lacteos,true
+Cenas,"Tapas, pizzas y platos para compartir",Pizza mediterránea,"Verduras asadas, aceitunas y queso",10.50,gluten|lacteos,true
+Cenas,"Tapas, pizzas y platos para compartir",Provolone al horno,Queso provolone fundido con tomate,8.80,lacteos,true
+Cenas,"Tapas, pizzas y platos para compartir",Satay de pollo,Brochetas de pollo con salsa de cacahuete,8.90,cacahuetes|soja|sesamo,true
+Cenas,"Tapas, pizzas y platos para compartir",Sándwich club,"Pollo, bacon, huevo, lechuga, tomate y mayonesa",9.80,gluten|huevos|lacteos,true
+Cenas,"Tapas, pizzas y platos para compartir",Tabla de ibéricos,"Jamón, chorizo, salchichón y lomo ibérico",14.50,sulfitos,true
+Cenas,"Tapas, pizzas y platos para compartir",Tabla de quesos,Selección de quesos con mermelada,12.50,lacteos|frutos_secos|sulfitos,true
+Cenas,"Tapas, pizzas y platos para compartir",Taco de cochinita,Taco de cochinita pibil con cebolla encurtida,4.50,gluten|sulfitos,true
+Cenas,"Tapas, pizzas y platos para compartir",Taco de pollo chipotle,Taco de pollo con salsa chipotle,4.30,gluten|lacteos,true
+Cenas,"Tapas, pizzas y platos para compartir",Taco vegano de heura,Taco vegetal con salsa de soja y sésamo,4.60,gluten|soja|sesamo,true
+Cenas,"Tapas, pizzas y platos para compartir",Tequeños de queso,Tequeños fritos con salsa dulce,7.90,gluten|lacteos|huevos,true
+Cenas,"Tapas, pizzas y platos para compartir",Tiras de pollo crujiente,Pollo empanado con salsa mostaza miel,8.50,gluten|huevos|mostaza,true
+Bebidas,"Refrescos, cafés y cervezas",Agua con gas,Botella de agua con gas,1.80,,true
+Bebidas,"Refrescos, cafés y cervezas",Agua mineral 50 cl,Botella de agua mineral,1.50,,true
+Bebidas,"Refrescos, cafés y cervezas",Aquarius limón,Bebida isotónica sabor limón,2.40,,true
+Bebidas,"Refrescos, cafés y cervezas",Aquarius naranja,Bebida isotónica sabor naranja,2.40,,true
+Bebidas,"Refrescos, cafés y cervezas",Bitter Kas,Bitter sin alcohol,2.40,,true
+Bebidas,"Refrescos, cafés y cervezas",Café con leche,Café con leche caliente,1.80,lacteos,true
+Bebidas,"Refrescos, cafés y cervezas",Café cortado,Café con un toque de leche,1.60,lacteos,true
+Bebidas,"Refrescos, cafés y cervezas",Café solo,Café espresso,1.40,,true
+Bebidas,"Refrescos, cafés y cervezas",Cappuccino,Café con leche espumada y cacao,2.20,lacteos,true
+Bebidas,"Refrescos, cafés y cervezas",Cerveza caña,Cerveza de barril pequeña,1.80,gluten,true
+Bebidas,"Refrescos, cafés y cervezas",Cerveza doble,Cerveza de barril doble,2.80,gluten,true
+Bebidas,"Refrescos, cafés y cervezas",Cerveza sin alcohol,Cerveza sin alcohol,2.50,gluten,true
+Bebidas,"Refrescos, cafés y cervezas",Cerveza tostada,Cerveza tostada,2.80,gluten,true
+Bebidas,"Refrescos, cafés y cervezas",Coca-Cola,Refresco de cola,2.20,,true
+Bebidas,"Refrescos, cafés y cervezas",Coca-Cola Zero,Refresco de cola sin azúcar,2.20,,true
+Bebidas,"Refrescos, cafés y cervezas",Fanta limón,Refresco de limón,2.20,,true
+Bebidas,"Refrescos, cafés y cervezas",Fanta naranja,Refresco de naranja,2.20,,true
+Bebidas,"Refrescos, cafés y cervezas",Infusión manzanilla,Infusión de manzanilla,1.60,,true
+Bebidas,"Refrescos, cafés y cervezas",Infusión poleo menta,Infusión de poleo menta,1.60,,true
+Bebidas,"Refrescos, cafés y cervezas",Licor de crema,Licor de crema con hielo,4.50,lacteos|sulfitos,true
+Bebidas,"Refrescos, cafés y cervezas",Nestea limón,Té frío sabor limón,2.40,,true
+Bebidas,"Refrescos, cafés y cervezas",Radler,Cerveza con limón,2.50,gluten,true
+Bebidas,"Refrescos, cafés y cervezas",Sangría copa,Sangría casera por copa,4.00,sulfitos,true
+Bebidas,"Refrescos, cafés y cervezas",Tinto de verano,Vino tinto con refresco de limón,3.50,sulfitos,true
+Bebidas,"Refrescos, cafés y cervezas",Té negro,Té negro caliente,1.60,,true
+Bebidas,"Refrescos, cafés y cervezas",Tónica,Tónica clásica,2.30,,true
+Bebidas,"Refrescos, cafés y cervezas",Vermouth rojo,Vermouth rojo con hielo y naranja,3.50,sulfitos,true
+Bebidas,"Refrescos, cafés y cervezas",Zumo de melocotón,Zumo embotellado de melocotón,2.20,,true
+Bebidas,"Refrescos, cafés y cervezas",Zumo de naranja,Zumo embotellado de naranja,2.20,,true
+Bebidas,"Refrescos, cafés y cervezas",Zumo de piña,Zumo embotellado de piña,2.20,,true
+Vinos,"Blancos, tintos, rosados y espumosos",Blanco albariño botella,Botella de vino blanco albariño,18.50,sulfitos,true
+Vinos,"Blancos, tintos, rosados y espumosos",Blanco albariño copa,Vino blanco albariño servido por copa,3.80,sulfitos,true
+Vinos,"Blancos, tintos, rosados y espumosos",Blanco chardonnay botella,Botella de vino blanco chardonnay,16.50,sulfitos,true
+Vinos,"Blancos, tintos, rosados y espumosos",Blanco chardonnay copa,Vino blanco chardonnay servido por copa,3.50,sulfitos,true
+Vinos,"Blancos, tintos, rosados y espumosos",Blanco verdejo botella,Botella de vino blanco verdejo,15.00,sulfitos,true
+Vinos,"Blancos, tintos, rosados y espumosos",Blanco verdejo copa,Vino blanco verdejo servido por copa,3.20,sulfitos,true
+Vinos,"Blancos, tintos, rosados y espumosos",Cava brut botella,Botella de cava brut,16.00,sulfitos,true
+Vinos,"Blancos, tintos, rosados y espumosos",Cava brut copa,Cava brut servido por copa,3.50,sulfitos,true
+Vinos,"Blancos, tintos, rosados y espumosos",Moscato botella,Botella de vino moscato dulce,15.50,sulfitos,true
+Vinos,"Blancos, tintos, rosados y espumosos",Ribera del Duero botella,Botella Ribera del Duero,20.00,sulfitos,true
+Vinos,"Blancos, tintos, rosados y espumosos",Ribera del Duero copa,Vino Ribera del Duero servido por copa,4.00,sulfitos,true
+Vinos,"Blancos, tintos, rosados y espumosos",Rioja crianza botella,Botella Rioja crianza,18.50,sulfitos,true
+Vinos,"Blancos, tintos, rosados y espumosos",Rioja crianza copa,Vino Rioja crianza servido por copa,3.80,sulfitos,true
+Vinos,"Blancos, tintos, rosados y espumosos",Rosado navarra botella,Botella de vino rosado joven,14.50,sulfitos,true
+Vinos,"Blancos, tintos, rosados y espumosos",Rosado navarra copa,Vino rosado joven servido por copa,3.20,sulfitos,true
+Vinos,"Blancos, tintos, rosados y espumosos",Tinto crianza botella,Botella de vino tinto crianza,18.00,sulfitos,true
+Vinos,"Blancos, tintos, rosados y espumosos",Tinto crianza copa,Vino tinto crianza servido por copa,3.80,sulfitos,true
+Vinos,"Blancos, tintos, rosados y espumosos",Tinto joven botella,Botella de vino tinto joven,13.50,sulfitos,true
+Vinos,"Blancos, tintos, rosados y espumosos",Tinto joven copa,Vino tinto joven servido por copa,3.00,sulfitos,true
+Vinos,"Blancos, tintos, rosados y espumosos",Tinto reserva botella,Botella de vino tinto reserva,24.00,sulfitos,true

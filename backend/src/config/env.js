@@ -21,4 +21,6 @@ export const env = Object.freeze({
   jwtSecret: process.env.JWT_SECRET?.trim() || null,
   jwtExpiresIn: process.env.JWT_EXPIRES_IN ?? '1d',
   bcryptSaltRounds: parsedBcryptSaltRounds,
+  demoAdminEmail: process.env.DEMO_ADMIN_EMAIL?.trim().toLowerCase() || null,
+  demoAdminPassword: process.env.DEMO_ADMIN_PASSWORD || null,
 })
