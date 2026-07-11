@@ -48,3 +48,13 @@
 .button--ghost:hover {
   background: #f3d7cb;
 }
+
+.button--danger {
+  color: #84210f;
+  background: #fee2d8;
+}
+
+.button--danger:hover:not(:disabled) {
+  color: var(--color-surface);
+  background: #a83217;
+}

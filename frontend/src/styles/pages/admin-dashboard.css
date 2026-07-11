@@ -30,6 +30,11 @@
   line-height: 1.05;
 }
 
+.dashboard-header__meta {
+  margin-top: var(--space-4);
+  color: var(--color-text-muted);
+}
+
 .dashboard-grid {
   display: grid;
   gap: var(--space-4);
