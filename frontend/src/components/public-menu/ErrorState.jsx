@@ -1,7 +1,13 @@
 import { Link } from 'react-router-dom'
 import '../../styles/components/feedback-state.css'
 
-function ErrorState({ title, message, onRetry }) {
+function ErrorState({
+  title,
+  message,
+  onRetry,
+  actionLabel = 'Volver al inicio',
+  actionTo = '/',
+}) {
   return (
     <main className="feedback-state">
       <p className="feedback-state__icon" aria-hidden="true">
@@ -15,7 +21,7 @@ function ErrorState({ title, message, onRetry }) {
             Reintentar
           </button>
         )}
-        <Link to="/">Volver al inicio</Link>
+        <Link to={actionTo}>{actionLabel}</Link>
       </div>
     </main>
   )

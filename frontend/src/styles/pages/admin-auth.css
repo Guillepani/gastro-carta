@@ -1,0 +1,103 @@
+.auth-page {
+  display: grid;
+  min-height: 100vh;
+  padding: var(--space-6) var(--space-4);
+  background:
+    radial-gradient(circle at top left, rgb(214 151 61 / 20%), transparent 18rem),
+    var(--color-background);
+}
+
+.auth-card {
+  width: min(100%, 34rem);
+  margin: auto;
+  padding: clamp(var(--space-6), 6vw, var(--space-12));
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.auth-card__brand {
+  display: inline-flex;
+  margin-bottom: var(--space-8);
+  color: var(--color-primary);
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.auth-card__eyebrow,
+.dashboard-header__eyebrow,
+.dashboard-card__label {
+  color: var(--color-primary);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.auth-card h1 {
+  margin-top: var(--space-2);
+  font-size: clamp(2rem, 9vw, 3rem);
+  line-height: 1.05;
+}
+
+.auth-card__description {
+  margin-top: var(--space-4);
+  color: var(--color-text-muted);
+}
+
+.auth-form {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+}
+
+.form-field {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.form-field label {
+  font-weight: 800;
+}
+
+.form-field input {
+  width: 100%;
+  min-height: 3rem;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  font: inherit;
+  background: #fffdfa;
+}
+
+.form-field input:focus {
+  border-color: var(--color-primary);
+  outline: none;
+  box-shadow: 0 0 0 4px rgb(163 59 32 / 14%);
+}
+
+.form-field__help {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.form-error {
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid #f0b7a4;
+  border-radius: var(--radius-md);
+  color: #7d2a15;
+  font-weight: 700;
+  background: #fff0eb;
+}
+
+.auth-form__hint {
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.auth-form__hint a {
+  color: var(--color-primary-dark);
+  font-weight: 800;
+}
