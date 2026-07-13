@@ -8,6 +8,7 @@ function AllergenLegend({ allergens }) {
       <div className="allergen-legend__heading">
         <p>Información alimentaria</p>
         <h2 id="allergen-legend-title">Leyenda de alérgenos</h2>
+        <span>Si tienes alergias o intolerancias, avisa al personal antes de pedir.</span>
       </div>
       <div className="allergen-legend__grid">
         {allergens.map((allergen) => (

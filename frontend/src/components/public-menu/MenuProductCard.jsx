@@ -11,6 +11,7 @@ function MenuProductCard({ product }) {
     <article className={`product-card${product.isFeatured ? ' product-card--featured' : ''}`}>
       <div className="product-card__heading">
         <h4>{product.name}</h4>
+        <span className="product-card__dots" aria-hidden="true" />
         <p className="product-card__price">{priceFormatter.format(product.price)}</p>
       </div>
       {product.description && (

@@ -18,6 +18,15 @@ function countCategoryProducts(category) {
   )
 }
 
+function getRestaurantDetails(restaurant) {
+  return [
+    restaurant.address && { label: 'Dirección', value: restaurant.address },
+    restaurant.phone && { label: 'Teléfono', value: restaurant.phone },
+    restaurant.email && { label: 'Email', value: restaurant.email },
+    restaurant.instagram && { label: 'Instagram', value: restaurant.instagram },
+  ].filter(Boolean)
+}
+
 function PublicMenuPage() {
   const { slug } = useParams()
   const [searchParams] = useSearchParams()
@@ -77,9 +86,12 @@ function PublicMenuPage() {
   }
 
   const hasProducts = visibleCategories.length > 0
+  const restaurantDetails = getRestaurantDetails(menu.restaurant)
 
   return (
-    <main className={`public-menu${isAdminPreview ? ' public-menu--preview' : ''}`}>
+    <main
+      className={`public-menu menu-theme-classic${isAdminPreview ? ' public-menu--preview' : ''}`}
+    >
       {isAdminPreview && (
         <aside className="menu-preview-bar" aria-label="Vista previa de administración">
           <div className="menu-container menu-preview-bar__content">
@@ -98,8 +110,19 @@ function PublicMenuPage() {
           </Link>
           <p className="menu-hero__eyebrow">Nuestra carta</p>
           <h1>{menu.restaurant.name}</h1>
+          <span className="menu-hero__divider" aria-hidden="true" />
           {menu.restaurant.description && (
             <p className="menu-hero__description">{menu.restaurant.description}</p>
+          )}
+          {restaurantDetails.length > 0 && (
+            <ul className="menu-hero__details" aria-label="Datos del restaurante">
+              {restaurantDetails.map((detail) => (
+                <li key={detail.label}>
+                  <span>{detail.label}</span>
+                  {detail.value}
+                </li>
+              ))}
+            </ul>
           )}
         </div>
       </header>
@@ -133,6 +156,19 @@ function PublicMenuPage() {
 
         <AllergenLegend allergens={menu.allergens} />
       </div>
+
+      {restaurantDetails.length > 0 && (
+        <footer className="menu-footer">
+          <div className="menu-container menu-footer__content">
+            <p>{menu.restaurant.name}</p>
+            <ul aria-label="Información del restaurante">
+              {restaurantDetails.map((detail) => (
+                <li key={detail.label}>{detail.value}</li>
+              ))}
+            </ul>
+          </div>
+        </footer>
+      )}
     </main>
   )
 }

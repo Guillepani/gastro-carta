@@ -6,8 +6,11 @@ function MenuSubcategory({ subcategory }) {
       className="menu-subcategory"
       aria-labelledby={`subcategory-title-${subcategory.id}`}
     >
-      <h3 id={`subcategory-title-${subcategory.id}`}>{subcategory.name}</h3>
-      <div className="product-grid">
+      <header className="menu-subcategory__header">
+        <h3 id={`subcategory-title-${subcategory.id}`}>{subcategory.name}</h3>
+        {subcategory.description && <p>{subcategory.description}</p>}
+      </header>
+      <div className="menu-product-list">
         {subcategory.products.map((product) => (
           <MenuProductCard key={product.id} product={product} />
         ))}
