@@ -101,7 +101,7 @@ function ProductForm({
 
   return (
     <form className="admin-form product-form" onSubmit={handleSubmit}>
-      {title && <h3 className="admin-form__title">{title}</h3>}
+      {title && <h3 className="admin-form__title" id={`${idPrefix}-title`}>{title}</h3>}
       <div className="admin-form__grid">
         <div className="form-field">
           <label htmlFor={`${idPrefix}-name`}>Nombre</label>
@@ -232,6 +232,7 @@ function ProductForm({
 }
 
 function ProductManager({
+  activeCategory,
   allergens,
   categories,
   error,
@@ -243,11 +244,13 @@ function ProductManager({
   onStartEdit,
   onSubmitEdit,
   products,
+  productsWithoutSubcategory = [],
   selectedProduct,
   subcategories,
 }) {
   const [formData, setFormData] = useState(INITIAL_FORM)
   const [editData, setEditData] = useState(INITIAL_FORM)
+  const [isCreateOpen, setIsCreateOpen] = useState(false)
   const categoryNames = useMemo(
     () => new Map(categories.map((category) => [category.id, category.name])),
     [categories],
@@ -261,7 +264,11 @@ function ProductManager({
   )
 
   useEffect(() => {
-    if (!formData.categoryId && categories.length > 0) {
+    const selectedCategoryExists = categories.some(
+      (category) => category.id === formData.categoryId,
+    )
+
+    if ((!formData.categoryId || !selectedCategoryExists) && categories.length > 0) {
       setFormData((current) => ({ ...current, categoryId: categories[0].id }))
     }
   }, [categories, formData.categoryId])
@@ -277,11 +284,66 @@ function ProductManager({
         ...INITIAL_FORM,
         categoryId: categories[0]?.id || '',
       })
+      setIsCreateOpen(false)
     }
   }
 
   async function handleEdit(payload) {
     await onSubmitEdit(selectedProduct.id, payload)
+  }
+
+  function handleToggleAvailability(product) {
+    onSubmitEdit(product.id, {
+      allergenIds: product.allergens.map((allergen) => allergen.id),
+      categoryId: product.categoryId,
+      description: product.description || null,
+      isAvailable: !product.isAvailable,
+      name: product.name,
+      price: Number(product.price),
+      sortOrder: product.sortOrder ?? 0,
+      subcategoryId: product.subcategoryId || null,
+    })
+  }
+
+  function renderProduct(product) {
+    return (
+      <article className="admin-list-item product-item" key={product.id}>
+        <div className="admin-list-item__body">
+          <div className="product-item__heading">
+            <h3>{product.name}</h3>
+            <strong>{priceFormatter.format(product.price)}</strong>
+          </div>
+          {product.description && <p>{product.description}</p>}
+          <p>
+            <span className="admin-meta-label">Ubicación</span>{' '}
+            {categoryNames.get(product.categoryId) || 'Categoría no disponible'}
+            {product.subcategoryId &&
+              ` · ${subcategoryNames.get(product.subcategoryId) || 'Subcategoría no disponible'}`}
+          </p>
+          <div className="product-item__meta">
+            <span className={product.isAvailable ? 'pill pill--success' : 'pill'}>
+              {product.isAvailable ? 'Disponible' : 'No disponible'}
+            </span>
+            {product.allergens.map((allergen) => (
+              <span className="pill" key={allergen.id}>
+                <span aria-hidden="true">{allergen.emoji}</span> {allergen.name}
+              </span>
+            ))}
+          </div>
+        </div>
+        <div className="admin-actions">
+          <button className="button button--ghost" type="button" onClick={() => onStartEdit(product)}>
+            Editar
+          </button>
+          <button className="button button--ghost" type="button" onClick={() => handleToggleAvailability(product)}>
+            {product.isAvailable ? 'Pausar' : 'Activar'}
+          </button>
+          <button className="button button--danger" type="button" onClick={() => onDelete(product)}>
+            Eliminar
+          </button>
+        </div>
+      </article>
+    )
   }
 
   return (
@@ -290,9 +352,20 @@ function ProductManager({
         <div>
           <p className="dashboard-card__label">Platos y bebidas</p>
           <h2>Productos</h2>
-          <p>Gestiona disponibilidad, precio, categoría y alérgenos de cada producto.</p>
+          <p>
+            {activeCategory
+              ? `Edita los productos de ${activeCategory.name}, sus precios y alérgenos.`
+              : 'Crea una categoría antes de añadir productos.'}
+          </p>
         </div>
-        <span>{products.length} total</span>
+        <button
+          className="button button--primary"
+          type="button"
+          onClick={() => setIsCreateOpen(true)}
+          disabled={categories.length === 0}
+        >
+          + Producto
+        </button>
       </div>
 
       <AdminNotice tone="error">{error}</AdminNotice>
@@ -300,80 +373,81 @@ function ProductManager({
 
       {categories.length === 0 ? (
         <EmptyState message="Crea una categoría antes de añadir productos." />
-      ) : (
-        <ProductForm
-          allergens={allergens}
-          categories={categories}
-          formData={formData}
-          idPrefix="product-new"
-          isSaving={isSaving}
-          onChange={setFormData}
-          onSubmit={handleCreate}
-          subcategories={subcategories}
-          submitLabel="Crear producto"
-          title="Añadir producto"
-        />
+      ) : isCreateOpen ? (
+        <div className="admin-modal" role="dialog" aria-modal="true" aria-labelledby="product-new-title">
+          <div className="admin-modal__panel">
+            <ProductForm
+              allergens={allergens}
+              categories={categories}
+              formData={formData}
+              idPrefix="product-new"
+              isSaving={isSaving}
+              onCancel={() => setIsCreateOpen(false)}
+              onChange={setFormData}
+              onSubmit={handleCreate}
+              subcategories={subcategories}
+              submitLabel="Guardar producto"
+              title="Producto"
+            />
+          </div>
+        </div>
+      ) : null}
+
+      {selectedProduct && (
+        <div className="admin-modal" role="dialog" aria-modal="true" aria-labelledby={`product-edit-${selectedProduct.id}-title`}>
+          <div className="admin-modal__panel">
+            <ProductForm
+              allergens={allergens}
+              categories={categories}
+              formData={editData}
+              idPrefix={`product-edit-${selectedProduct.id}`}
+              isSaving={isSaving}
+              onCancel={onEditCancel}
+              onChange={setEditData}
+              onSubmit={handleEdit}
+              subcategories={subcategories}
+              submitLabel="Guardar producto"
+              title="Producto"
+            />
+          </div>
+        </div>
       )}
 
       {products.length === 0 ? (
-        <EmptyState message="Todavía no hay productos." />
+        <EmptyState message="Todavía no hay productos en esta categoría." />
       ) : (
-        <div className="admin-list product-list">
-          {products.map((product) => {
-            const isEditing = selectedProduct?.id === product.id
+        <div className="product-board">
+          {productsWithoutSubcategory.length > 0 && (
+            <section className="product-group">
+              <header className="product-group__header">
+                <h3>Sin subcategoría</h3>
+                <span>{productsWithoutSubcategory.length} productos</span>
+              </header>
+              <div className="admin-list product-list">
+                {productsWithoutSubcategory.map(renderProduct)}
+              </div>
+            </section>
+          )}
+
+          {subcategories.map((subcategory) => {
+            const subcategoryProducts = products.filter(
+              (product) => product.subcategoryId === subcategory.id,
+            )
 
             return (
-              <article className="admin-list-item product-item" key={product.id}>
-                {isEditing ? (
-                  <ProductForm
-                    allergens={allergens}
-                    categories={categories}
-                    formData={editData}
-                    idPrefix={`product-edit-${product.id}`}
-                    isSaving={isSaving}
-                    onCancel={onEditCancel}
-                    onChange={setEditData}
-                    onSubmit={handleEdit}
-                    subcategories={subcategories}
-                    submitLabel="Guardar producto"
-                    title={`Editando ${product.name}`}
-                  />
+              <section className="product-group" key={subcategory.id}>
+                <header className="product-group__header">
+                  <h3>{subcategory.name}</h3>
+                  <span>{subcategoryProducts.length} productos</span>
+                </header>
+                {subcategoryProducts.length === 0 ? (
+                  <EmptyState message="Esta subcategoría aún no tiene productos." />
                 ) : (
-                  <>
-                    <div className="admin-list-item__body">
-                      <div className="product-item__heading">
-                        <h3>{product.name}</h3>
-                        <strong>{priceFormatter.format(product.price)}</strong>
-                      </div>
-                      {product.description && <p>{product.description}</p>}
-                      <p>
-                        <span className="admin-meta-label">Ubicación</span>{' '}
-                        {categoryNames.get(product.categoryId) || 'Categoría no disponible'}
-                        {product.subcategoryId &&
-                          ` · ${subcategoryNames.get(product.subcategoryId) || 'Subcategoría no disponible'}`}
-                      </p>
-                      <div className="product-item__meta">
-                        <span className={product.isAvailable ? 'pill pill--success' : 'pill'}>
-                          {product.isAvailable ? 'Disponible' : 'No disponible'}
-                        </span>
-                        {product.allergens.map((allergen) => (
-                          <span className="pill" key={allergen.id}>
-                            <span aria-hidden="true">{allergen.emoji}</span> {allergen.name}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="admin-actions">
-                      <button className="button button--ghost" type="button" onClick={() => onStartEdit(product)}>
-                        Editar
-                      </button>
-                      <button className="button button--danger" type="button" onClick={() => onDelete(product)}>
-                        Eliminar
-                      </button>
-                    </div>
-                  </>
+                  <div className="admin-list product-list">
+                    {subcategoryProducts.map(renderProduct)}
+                  </div>
                 )}
-              </article>
+              </section>
             )
           })}
         </div>

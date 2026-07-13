@@ -11,17 +11,30 @@ function DashboardSummary({ admin, categories, onLogout, products, restaurant, s
           <Link className="dashboard-header__brand" to="/">
             Gastro Carta
           </Link>
-          <p className="dashboard-header__eyebrow">Panel privado</p>
-          <h1>Hola, {admin.name}</h1>
+          <p className="dashboard-header__eyebrow">Panel admin</p>
+          <h1>Gestión de la carta</h1>
           {restaurant && (
             <p className="dashboard-header__meta">
-              Gestionando <strong>{restaurant.name}</strong>
+              Hola, {admin.name}. Estás gestionando <strong>{restaurant.name}</strong>
             </p>
           )}
         </div>
-        <button className="button button--ghost" type="button" onClick={onLogout}>
-          Cerrar sesión
-        </button>
+        <nav className="dashboard-nav" aria-label="Navegación del panel">
+          {publicMenuPath && (
+            <Link className="button button--primary" to={publicMenuPath}>
+              Carta
+            </Link>
+          )}
+          <button className="button button--ghost" type="button" aria-disabled="true">
+            Estadísticas
+          </button>
+          <button className="button button--ghost" type="button" aria-disabled="true">
+            Restaurante
+          </button>
+          <button className="button button--danger" type="button" onClick={onLogout}>
+            Salir
+          </button>
+        </nav>
       </header>
 
       <section className="dashboard-grid" aria-label="Resumen del restaurante">

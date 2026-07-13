@@ -15,6 +15,7 @@ function createPayload(formData) {
 }
 
 function CategoryManager({
+  activeCategoryId,
   categories,
   error,
   isSaving,
@@ -22,6 +23,7 @@ function CategoryManager({
   onCreate,
   onDelete,
   onEditCancel,
+  onSelectCategory,
   onStartEdit,
   onSubmitEdit,
   selectedCategory,
@@ -59,15 +61,22 @@ function CategoryManager({
     await onSubmitEdit(selectedCategory.id, createPayload(editData))
   }
 
+  function handleMove(category, direction) {
+    const nextSortOrder = Math.max(0, (category.sortOrder ?? 0) + direction)
+    onSubmitEdit(category.id, {
+      name: category.name,
+      sortOrder: nextSortOrder,
+    })
+  }
+
   return (
-    <section className="admin-section" id="admin-categories">
+    <section className="admin-section admin-section--sidebar" id="admin-categories">
       <div className="admin-section__heading">
         <div>
           <p className="dashboard-card__label">Carta</p>
           <h2>Categorías</h2>
-          <p>Define los grandes bloques de la carta y el orden en el que aparecen.</p>
+          <p>Elige una categoría para gestionar sus subcategorías y productos.</p>
         </div>
-        <span>{categories.length} total</span>
       </div>
 
       <AdminNotice tone="error">{error}</AdminNotice>
@@ -100,7 +109,7 @@ function CategoryManager({
           />
         </div>
         <button className="button button--primary admin-form__submit" type="submit" disabled={isSaving}>
-          {isSaving ? 'Guardando...' : 'Crear categoría'}
+          {isSaving ? 'Guardando...' : '+ Nueva'}
         </button>
       </form>
 
@@ -110,9 +119,13 @@ function CategoryManager({
         <div className="admin-list">
           {categories.map((category) => {
             const isEditing = selectedCategory?.id === category.id
+            const isActive = activeCategoryId === category.id
 
             return (
-              <article className="admin-list-item" key={category.id}>
+              <article
+                className={`admin-list-item category-sidebar-item${isActive ? ' category-sidebar-item--active' : ''}`}
+                key={category.id}
+              >
                 {isEditing ? (
                   <form className="admin-form admin-form--row" onSubmit={handleEditSubmit}>
                     <div className="form-field">
@@ -149,14 +162,36 @@ function CategoryManager({
                   </form>
                 ) : (
                   <>
-                    <div className="admin-list-item__body">
+                    <button
+                      className="category-sidebar-item__button"
+                      type="button"
+                      onClick={() => onSelectCategory(category.id)}
+                    >
                       <h3>{category.name}</h3>
                       <p>
                         <span className="admin-meta-label">Posición</span>{' '}
                         {category.sortOrder ?? 0}
                       </p>
-                    </div>
-                    <div className="admin-actions">
+                    </button>
+                    <div className="admin-actions admin-actions--compact">
+                      <button
+                        className="button button--ghost button--icon"
+                        type="button"
+                        onClick={() => handleMove(category, -1)}
+                        disabled={isSaving || (category.sortOrder ?? 0) === 0}
+                        aria-label={`Subir ${category.name}`}
+                      >
+                        ↑
+                      </button>
+                      <button
+                        className="button button--ghost button--icon"
+                        type="button"
+                        onClick={() => handleMove(category, 1)}
+                        disabled={isSaving}
+                        aria-label={`Bajar ${category.name}`}
+                      >
+                        ↓
+                      </button>
                       <button className="button button--ghost" type="button" onClick={() => onStartEdit(category)}>
                         Editar
                       </button>

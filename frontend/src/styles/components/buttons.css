@@ -36,6 +36,12 @@
   width: 100%;
 }
 
+.button--icon {
+  width: 2.65rem;
+  min-width: 2.65rem;
+  padding-inline: 0;
+}
+
 .button--primary {
   color: var(--color-surface);
   background: var(--color-primary);

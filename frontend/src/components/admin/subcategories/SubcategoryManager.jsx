@@ -17,6 +17,7 @@ function createPayload(formData) {
 }
 
 function SubcategoryManager({
+  activeCategory,
   categories,
   error,
   isSaving,
@@ -37,7 +38,11 @@ function SubcategoryManager({
   )
 
   useEffect(() => {
-    if (!formData.categoryId && categories.length > 0) {
+    const selectedCategoryExists = categories.some(
+      (category) => category.id === formData.categoryId,
+    )
+
+    if ((!formData.categoryId || !selectedCategoryExists) && categories.length > 0) {
       setFormData((current) => ({ ...current, categoryId: categories[0].id }))
     }
   }, [categories, formData.categoryId])
@@ -78,15 +83,28 @@ function SubcategoryManager({
     await onSubmitEdit(selectedSubcategory.id, createPayload(editData))
   }
 
+  function handleMove(subcategory, direction) {
+    const nextSortOrder = Math.max(0, (subcategory.sortOrder ?? 0) + direction)
+    onSubmitEdit(subcategory.id, {
+      categoryId: subcategory.categoryId,
+      name: subcategory.name,
+      sortOrder: nextSortOrder,
+    })
+  }
+
   return (
     <section className="admin-section" id="admin-subcategories">
       <div className="admin-section__heading">
         <div>
           <p className="dashboard-card__label">Organización</p>
           <h2>Subcategorías</h2>
-          <p>Agrupa productos dentro de una categoría para que la carta sea fácil de explorar.</p>
+          <p>
+            {activeCategory
+              ? `Organiza los bloques internos de ${activeCategory.name}.`
+              : 'Crea una categoría antes de añadir subcategorías.'}
+          </p>
         </div>
-        <span>{subcategories.length} total</span>
+        <span>+ Subcategoría</span>
       </div>
 
       <AdminNotice tone="error">{error}</AdminNotice>
@@ -121,7 +139,7 @@ function SubcategoryManager({
               type="text"
               value={formData.name}
               onChange={handleChange}
-              placeholder="Bocadillos, tartas, refrescos..."
+            placeholder="Bocadillos, tartas, refrescos..."
               required
             />
           </div>
@@ -138,20 +156,20 @@ function SubcategoryManager({
             />
           </div>
           <button className="button button--primary admin-form__submit" type="submit" disabled={isSaving}>
-            {isSaving ? 'Guardando...' : 'Crear subcategoría'}
+            {isSaving ? 'Guardando...' : '+ Subcategoría'}
           </button>
         </form>
       )}
 
       {subcategories.length === 0 ? (
-        <EmptyState message="Todavía no hay subcategorías." />
+        <EmptyState message="Todavía no hay subcategorías en esta categoría." />
       ) : (
-        <div className="admin-list">
+        <div className="admin-list subcategory-card-list">
           {subcategories.map((subcategory) => {
             const isEditing = selectedSubcategory?.id === subcategory.id
 
             return (
-              <article className="admin-list-item" key={subcategory.id}>
+              <article className="admin-list-item subcategory-card" key={subcategory.id}>
                 {isEditing ? (
                   <form className="admin-form admin-form--row" onSubmit={handleEditSubmit}>
                     <div className="form-field">
@@ -217,9 +235,27 @@ function SubcategoryManager({
                         {subcategory.sortOrder ?? 0}
                       </p>
                     </div>
-                    <div className="admin-actions">
+                    <div className="admin-actions admin-actions--compact">
+                      <button
+                        className="button button--ghost button--icon"
+                        type="button"
+                        onClick={() => handleMove(subcategory, -1)}
+                        disabled={isSaving || (subcategory.sortOrder ?? 0) === 0}
+                        aria-label={`Subir ${subcategory.name}`}
+                      >
+                        ↑
+                      </button>
+                      <button
+                        className="button button--ghost button--icon"
+                        type="button"
+                        onClick={() => handleMove(subcategory, 1)}
+                        disabled={isSaving}
+                        aria-label={`Bajar ${subcategory.name}`}
+                      >
+                        ↓
+                      </button>
                       <button className="button button--ghost" type="button" onClick={() => onStartEdit(subcategory)}>
-                        Editar
+                        Renombrar
                       </button>
                       <button className="button button--danger" type="button" onClick={() => onDelete(subcategory)}>
                         Eliminar
