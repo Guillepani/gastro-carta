@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 function DashboardSummary({ admin, categories, onLogout, products, restaurant, subcategories }) {
-  const publicMenuPath = restaurant ? `/carta/${restaurant.slug}` : null
+  const publicMenuPath = restaurant ? `/carta/${restaurant.slug}?preview=admin` : null
   const availableProducts = products.filter((product) => product.isAvailable).length
 
   return (
@@ -45,7 +45,7 @@ function DashboardSummary({ admin, categories, onLogout, products, restaurant, s
               <h2>Tu carta pública</h2>
               <p>Revisa cómo verán tus clientes los cambios publicados.</p>
               <Link className="button button--primary" to={publicMenuPath}>
-                Ver carta pública
+                Previsualizar carta pública
               </Link>
             </>
           ) : (

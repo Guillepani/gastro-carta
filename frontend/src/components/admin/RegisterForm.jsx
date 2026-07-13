@@ -26,7 +26,7 @@ function RegisterForm({ error, isSubmitting, onSubmit }) {
   }
 
   return (
-    <form className="auth-form" onSubmit={handleSubmit}>
+    <form className="auth-form" onSubmit={handleSubmit} aria-busy={isSubmitting}>
       <div className="form-field">
         <label htmlFor="register-name">Nombre del admin</label>
         <input
@@ -36,6 +36,7 @@ function RegisterForm({ error, isSubmitting, onSubmit }) {
           autoComplete="name"
           value={formData.name}
           onChange={handleChange}
+          disabled={isSubmitting}
           required
         />
       </div>
@@ -49,6 +50,7 @@ function RegisterForm({ error, isSubmitting, onSubmit }) {
           autoComplete="email"
           value={formData.email}
           onChange={handleChange}
+          disabled={isSubmitting}
           required
         />
       </div>
@@ -63,6 +65,7 @@ function RegisterForm({ error, isSubmitting, onSubmit }) {
           value={formData.password}
           onChange={handleChange}
           minLength={8}
+          disabled={isSubmitting}
           required
         />
         <p className="form-field__help">Mínimo 8 caracteres.</p>
@@ -76,6 +79,7 @@ function RegisterForm({ error, isSubmitting, onSubmit }) {
           type="text"
           value={formData.restaurantName}
           onChange={handleChange}
+          disabled={isSubmitting}
           required
         />
       </div>
@@ -89,6 +93,7 @@ function RegisterForm({ error, isSubmitting, onSubmit }) {
           value={formData.restaurantSlug}
           onChange={handleChange}
           placeholder="mi-restaurante"
+          disabled={isSubmitting}
         />
         <p className="form-field__help">
           Si lo dejas vacío, se generará desde el nombre del restaurante.
@@ -97,8 +102,8 @@ function RegisterForm({ error, isSubmitting, onSubmit }) {
 
       {error && <p className="form-error" role="alert">{error}</p>}
 
-      <button className="button button--primary" type="submit" disabled={isSubmitting}>
-        {isSubmitting ? 'Creando cuenta...' : 'Crear cuenta y restaurante'}
+      <button className="button button--primary button--full" type="submit" disabled={isSubmitting}>
+        {isSubmitting ? 'Creando cuenta y restaurante...' : 'Crear cuenta y restaurante'}
       </button>
 
       <p className="auth-form__hint">

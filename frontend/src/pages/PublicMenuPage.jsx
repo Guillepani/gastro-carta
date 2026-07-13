@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useSearchParams } from 'react-router-dom'
 import AllergenLegend from '../components/public-menu/AllergenLegend.jsx'
 import ErrorState from '../components/public-menu/ErrorState.jsx'
 import LoadingState from '../components/public-menu/LoadingState.jsx'
@@ -20,10 +20,12 @@ function countCategoryProducts(category) {
 
 function PublicMenuPage() {
   const { slug } = useParams()
+  const [searchParams] = useSearchParams()
   const [menu, setMenu] = useState(null)
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
   const [requestKey, setRequestKey] = useState(0)
+  const isAdminPreview = searchParams.get('preview') === 'admin'
 
   useEffect(() => {
     const controller = new AbortController()
@@ -77,7 +79,18 @@ function PublicMenuPage() {
   const hasProducts = visibleCategories.length > 0
 
   return (
-    <main className="public-menu">
+    <main className={`public-menu${isAdminPreview ? ' public-menu--preview' : ''}`}>
+      {isAdminPreview && (
+        <aside className="menu-preview-bar" aria-label="Vista previa de administración">
+          <div className="menu-container menu-preview-bar__content">
+            <p>Estás viendo la carta pública como previsualización.</p>
+            <Link className="button button--secondary" to="/admin/dashboard">
+              Volver al panel
+            </Link>
+          </div>
+        </aside>
+      )}
+
       <header className="menu-hero">
         <div className="menu-container menu-hero__content">
           <Link className="menu-hero__brand" to="/">

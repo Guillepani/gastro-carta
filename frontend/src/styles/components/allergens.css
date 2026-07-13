@@ -7,7 +7,7 @@
   border: 1px solid var(--color-border);
   border-radius: 999px;
   color: var(--color-text);
-  font-size: 0.85rem;
+  font-size: 0.86rem;
   background: var(--color-surface);
 }
 
@@ -19,9 +19,13 @@
 }
 
 .allergen-legend {
-  margin-top: 6rem;
-  padding-top: var(--space-12);
+  margin-top: var(--space-12);
+  padding: var(--space-6);
   border-top: 1px solid var(--color-border);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
 }
 
 .allergen-legend__heading {
@@ -30,7 +34,7 @@
 
 .allergen-legend__grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: var(--space-3);
 }
 

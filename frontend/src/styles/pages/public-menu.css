@@ -3,6 +3,33 @@
   background: var(--color-background);
 }
 
+.menu-preview-bar {
+  position: sticky;
+  z-index: 30;
+  top: 0;
+  border-bottom: 1px solid rgb(163 59 32 / 18%);
+  background: rgb(255 250 243 / 96%);
+  box-shadow: 0 0.5rem 1.5rem rgb(79 45 30 / 8%);
+  backdrop-filter: blur(0.75rem);
+}
+
+.menu-preview-bar__content {
+  display: grid;
+  gap: var(--space-3);
+  align-items: center;
+  padding-block: var(--space-3);
+}
+
+.menu-preview-bar p {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.menu-preview-bar .button {
+  justify-self: start;
+}
+
 .menu-hero {
   color: var(--color-surface);
   background:
@@ -16,7 +43,7 @@
 
 .menu-hero__brand {
   display: inline-block;
-  margin-bottom: var(--space-12);
+  margin-bottom: var(--space-8);
   font-size: 0.8rem;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -44,7 +71,8 @@
 .menu-hero__description {
   max-width: 42rem;
   margin-top: var(--space-6);
-  color: rgb(255 255 255 / 78%);
+  color: rgb(255 255 255 / 82%);
+  font-size: clamp(1rem, 3vw, 1.15rem);
 }
 
 .menu-nav {
@@ -58,7 +86,7 @@
 
 .menu-nav__scroll {
   display: flex;
-  gap: var(--space-6);
+  gap: var(--space-3);
   overflow-x: auto;
   scrollbar-width: none;
 }
@@ -69,7 +97,8 @@
 
 .menu-nav a {
   flex: 0 0 auto;
-  padding-block: var(--space-4);
+  padding: var(--space-3) var(--space-3);
+  border-radius: 999px;
   color: var(--color-text-muted);
   font-size: 0.9rem;
   font-weight: 700;
@@ -78,22 +107,27 @@
 
 .menu-nav a:hover {
   color: var(--color-primary);
+  background: var(--color-primary-soft);
 }
 
 .menu-content {
-  padding-block: var(--space-12);
+  padding-block: var(--space-8);
 }
 
 .menu-category {
   scroll-margin-top: 5rem;
 }
 
+.public-menu--preview .menu-category {
+  scroll-margin-top: 9rem;
+}
+
 .menu-category + .menu-category {
-  margin-top: 5rem;
+  margin-top: var(--space-12);
 }
 
 .menu-category__header {
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-6);
 }
 
 .menu-category__header h2,
@@ -109,7 +143,7 @@
 }
 
 .menu-subcategory h3 {
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-4);
   padding-bottom: var(--space-3);
   border-bottom: 1px solid var(--color-border);
   font-size: clamp(1.25rem, 5vw, 1.65rem);
@@ -146,6 +180,10 @@
 }
 
 @media (min-width: 40rem) {
+  .menu-preview-bar__content {
+    grid-template-columns: 1fr auto;
+  }
+
   .product-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }

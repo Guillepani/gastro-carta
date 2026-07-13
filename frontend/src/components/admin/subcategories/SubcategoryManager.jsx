@@ -84,6 +84,7 @@ function SubcategoryManager({
         <div>
           <p className="dashboard-card__label">Organización</p>
           <h2>Subcategorías</h2>
+          <p>Agrupa productos dentro de una categoría para que la carta sea fácil de explorar.</p>
         </div>
         <span>{subcategories.length} total</span>
       </div>
@@ -95,6 +96,7 @@ function SubcategoryManager({
         <EmptyState message="Crea una categoría antes de añadir subcategorías." />
       ) : (
         <form className="admin-form admin-form--inline" onSubmit={handleCreate}>
+          <h3 className="admin-form__title">Añadir subcategoría</h3>
           <div className="form-field">
             <label htmlFor="subcategory-category">Categoría</label>
             <select
@@ -119,6 +121,7 @@ function SubcategoryManager({
               type="text"
               value={formData.name}
               onChange={handleChange}
+              placeholder="Bocadillos, tartas, refrescos..."
               required
             />
           </div>
@@ -134,8 +137,8 @@ function SubcategoryManager({
               onChange={handleChange}
             />
           </div>
-          <button className="button button--primary" type="submit" disabled={isSaving}>
-            Crear subcategoría
+          <button className="button button--primary admin-form__submit" type="submit" disabled={isSaving}>
+            {isSaving ? 'Guardando...' : 'Crear subcategoría'}
           </button>
         </form>
       )}
@@ -194,7 +197,7 @@ function SubcategoryManager({
                     </div>
                     <div className="admin-actions">
                       <button className="button button--primary" type="submit" disabled={isSaving}>
-                        Guardar
+                        {isSaving ? 'Guardando...' : 'Guardar cambios'}
                       </button>
                       <button className="button button--ghost" type="button" onClick={onEditCancel}>
                         Cancelar
@@ -205,8 +208,14 @@ function SubcategoryManager({
                   <>
                     <div className="admin-list-item__body">
                       <h3>{subcategory.name}</h3>
-                      <p>{categoryNames.get(subcategory.categoryId) || 'Categoría no disponible'}</p>
-                      <p>Posición {subcategory.sortOrder ?? 0}</p>
+                      <p>
+                        <span className="admin-meta-label">Categoría</span>{' '}
+                        {categoryNames.get(subcategory.categoryId) || 'Categoría no disponible'}
+                      </p>
+                      <p>
+                        <span className="admin-meta-label">Posición</span>{' '}
+                        {subcategory.sortOrder ?? 0}
+                      </p>
                     </div>
                     <div className="admin-actions">
                       <button className="button button--ghost" type="button" onClick={() => onStartEdit(subcategory)}>

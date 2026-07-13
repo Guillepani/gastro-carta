@@ -10,11 +10,11 @@ import '../styles/pages/admin-auth.css'
 function getRegisterErrorMessage(error) {
   if (error instanceof ApiError) {
     if (error.code === 'EMAIL_ALREADY_EXISTS') {
-      return 'Ese email ya está registrado.'
+      return 'Ese email ya está registrado. Inicia sesión o usa otro email.'
     }
 
     if (error.code === 'SLUG_ALREADY_EXISTS') {
-      return 'Ese slug de restaurante ya está en uso.'
+      return 'Ese slug de restaurante ya está en uso. Prueba una dirección pública distinta.'
     }
 
     return error.message

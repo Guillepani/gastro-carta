@@ -18,7 +18,7 @@ function LoginForm({ error, isSubmitting, onSubmit }) {
   }
 
   return (
-    <form className="auth-form" onSubmit={handleSubmit}>
+    <form className="auth-form" onSubmit={handleSubmit} aria-busy={isSubmitting}>
       <div className="form-field">
         <label htmlFor="login-email">Email</label>
         <input
@@ -28,6 +28,7 @@ function LoginForm({ error, isSubmitting, onSubmit }) {
           autoComplete="email"
           value={formData.email}
           onChange={handleChange}
+          disabled={isSubmitting}
           required
         />
       </div>
@@ -42,14 +43,15 @@ function LoginForm({ error, isSubmitting, onSubmit }) {
           value={formData.password}
           onChange={handleChange}
           minLength={8}
+          disabled={isSubmitting}
           required
         />
       </div>
 
       {error && <p className="form-error" role="alert">{error}</p>}
 
-      <button className="button button--primary" type="submit" disabled={isSubmitting}>
-        {isSubmitting ? 'Entrando...' : 'Entrar al panel'}
+      <button className="button button--primary button--full" type="submit" disabled={isSubmitting}>
+        {isSubmitting ? 'Comprobando acceso...' : 'Entrar al panel'}
       </button>
 
       <p className="auth-form__hint">

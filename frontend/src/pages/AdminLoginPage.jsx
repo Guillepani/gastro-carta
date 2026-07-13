@@ -9,7 +9,9 @@ import '../styles/pages/admin-auth.css'
 
 function getLoginErrorMessage(error) {
   if (error instanceof ApiError) {
-    if (error.status === 401) return 'Email o contraseña incorrectos.'
+    if (error.status === 401) {
+      return 'Email o contraseña incorrectos. Revisa los datos y vuelve a intentarlo.'
+    }
     return error.message
   }
 

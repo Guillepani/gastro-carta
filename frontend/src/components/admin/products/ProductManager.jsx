@@ -55,6 +55,7 @@ function ProductForm({
   onSubmit,
   subcategories,
   submitLabel,
+  title,
 }) {
   const availableSubcategories = subcategories.filter(
     (subcategory) => subcategory.categoryId === formData.categoryId,
@@ -100,6 +101,7 @@ function ProductForm({
 
   return (
     <form className="admin-form product-form" onSubmit={handleSubmit}>
+      {title && <h3 className="admin-form__title">{title}</h3>}
       <div className="admin-form__grid">
         <div className="form-field">
           <label htmlFor={`${idPrefix}-name`}>Nombre</label>
@@ -109,6 +111,7 @@ function ProductForm({
             type="text"
             value={formData.name}
             onChange={handleTextChange}
+            placeholder="Nombre del plato o bebida"
             required
           />
         </div>
@@ -122,6 +125,7 @@ function ProductForm({
             step="0.01"
             value={formData.price}
             onChange={handleTextChange}
+            placeholder="0.00"
             required
           />
         </div>
@@ -190,11 +194,13 @@ function ProductForm({
           rows="3"
           value={formData.description}
           onChange={handleTextChange}
+          placeholder="Ingredientes principales, preparación o detalle útil para el cliente."
         />
       </div>
 
       <fieldset className="allergen-fieldset">
         <legend>Alérgenos</legend>
+        <p>Selecciona solo los alérgenos presentes en el producto.</p>
         <div className="allergen-options">
           {allergens.map((allergen) => (
             <label className="check-field" key={allergen.id}>
@@ -213,7 +219,7 @@ function ProductForm({
 
       <div className="admin-actions">
         <button className="button button--primary" type="submit" disabled={isSaving}>
-          {submitLabel}
+          {isSaving ? 'Guardando...' : submitLabel}
         </button>
         {onCancel && (
           <button className="button button--ghost" type="button" onClick={onCancel}>
@@ -284,6 +290,7 @@ function ProductManager({
         <div>
           <p className="dashboard-card__label">Platos y bebidas</p>
           <h2>Productos</h2>
+          <p>Gestiona disponibilidad, precio, categoría y alérgenos de cada producto.</p>
         </div>
         <span>{products.length} total</span>
       </div>
@@ -304,6 +311,7 @@ function ProductManager({
           onSubmit={handleCreate}
           subcategories={subcategories}
           submitLabel="Crear producto"
+          title="Añadir producto"
         />
       )}
 
@@ -328,6 +336,7 @@ function ProductManager({
                     onSubmit={handleEdit}
                     subcategories={subcategories}
                     submitLabel="Guardar producto"
+                    title={`Editando ${product.name}`}
                   />
                 ) : (
                   <>
@@ -338,6 +347,7 @@ function ProductManager({
                       </div>
                       {product.description && <p>{product.description}</p>}
                       <p>
+                        <span className="admin-meta-label">Ubicación</span>{' '}
                         {categoryNames.get(product.categoryId) || 'Categoría no disponible'}
                         {product.subcategoryId &&
                           ` · ${subcategoryNames.get(product.subcategoryId) || 'Subcategoría no disponible'}`}

@@ -39,8 +39,12 @@ function sortByOrderAndName(items) {
 
 function getRequestErrorMessage(error) {
   if (error instanceof ApiError) {
-    if (error.status === 409) return error.message
-    if (error.status === 400) return error.message
+    if (error.status === 409) {
+      return `${error.message}. Revisa primero los elementos relacionados.`
+    }
+    if (error.status === 400) {
+      return `${error.message}. Comprueba los campos del formulario.`
+    }
     if (error.status === 401) return 'Tu sesión ha caducado. Vuelve a iniciar sesión.'
     return error.message
   }
@@ -181,7 +185,13 @@ function AdminDashboardPage() {
   }
 
   async function handleDeleteCategory(category) {
-    if (!window.confirm(`¿Eliminar la categoría "${category.name}"?`)) return
+    if (
+      !window.confirm(
+        `¿Eliminar la categoría "${category.name}"?\n\nSolo se borrará si no tiene subcategorías ni productos asociados.`,
+      )
+    ) {
+      return
+    }
 
     await runMutation('categories', async () => {
       await deleteAdminCategory(category.id)
@@ -216,7 +226,13 @@ function AdminDashboardPage() {
   }
 
   async function handleDeleteSubcategory(subcategory) {
-    if (!window.confirm(`¿Eliminar la subcategoría "${subcategory.name}"?`)) return
+    if (
+      !window.confirm(
+        `¿Eliminar la subcategoría "${subcategory.name}"?\n\nSolo se borrará si no tiene productos asociados.`,
+      )
+    ) {
+      return
+    }
 
     await runMutation('subcategories', async () => {
       await deleteAdminSubcategory(subcategory.id)
@@ -263,7 +279,13 @@ function AdminDashboardPage() {
   }
 
   async function handleDeleteProduct(product) {
-    if (!window.confirm(`¿Eliminar el producto "${product.name}"?`)) return
+    if (
+      !window.confirm(
+        `¿Eliminar el producto "${product.name}"?\n\nEsta acción lo quitará de la carta.`,
+      )
+    ) {
+      return
+    }
 
     await runMutation('products', async () => {
       await deleteAdminProduct(product.id)

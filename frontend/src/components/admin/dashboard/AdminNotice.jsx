@@ -3,6 +3,7 @@ function AdminNotice({ children, tone = 'info' }) {
 
   return (
     <p className={`admin-notice admin-notice--${tone}`} role={tone === 'error' ? 'alert' : 'status'}>
+      <span aria-hidden="true">{tone === 'error' ? '⚠️' : '✓'}</span>
       {children}
     </p>
   )

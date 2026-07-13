@@ -13,7 +13,9 @@
   text-align: center;
   text-decoration: none;
   cursor: pointer;
+  border: 1px solid transparent;
   transition:
+    border-color 160ms ease,
     background-color 160ms ease,
     color 160ms ease,
     transform 160ms ease,
@@ -30,6 +32,10 @@
   transform: none;
 }
 
+.button--full {
+  width: 100%;
+}
+
 .button--primary {
   color: var(--color-surface);
   background: var(--color-primary);
@@ -42,6 +48,7 @@
 
 .button--ghost {
   color: var(--color-primary-dark);
+  border-color: rgb(163 59 32 / 12%);
   background: var(--color-primary-soft);
 }
 
