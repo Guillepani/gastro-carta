@@ -2,6 +2,7 @@ import { slugify } from '../../utils/slug.utils.js'
 
 const UUID_PATTERN =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
+const VALID_MENU_THEMES = new Set(['classic', 'warm', 'minimal', 'dark', 'fresh'])
 
 export class AdminError extends Error {
   constructor(statusCode, code, message) {
@@ -78,6 +79,14 @@ function normalizedSlug(value, fallback, maxLength = 120) {
   return slug
 }
 
+function optionalMenuTheme(value) {
+  if (value === undefined) return undefined
+  if (typeof value !== 'string' || !VALID_MENU_THEMES.has(value)) {
+    throw new AdminError(400, 'VALIDATION_ERROR', 'menuTheme no es válido')
+  }
+  return value
+}
+
 function ensureMutableFields(data) {
   if (Object.values(data).every((value) => value === undefined)) {
     throw new AdminError(400, 'VALIDATION_ERROR', 'No hay campos para actualizar')
@@ -120,6 +129,7 @@ export function validateRestaurantUpdate(input) {
     name,
     slug,
     description: optionalText(payload.description, 'description', 5000),
+    menuTheme: optionalMenuTheme(payload.menuTheme),
   })
 }
 

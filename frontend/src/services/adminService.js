@@ -4,6 +4,13 @@ export function listAdminRestaurants(options = {}) {
   return apiRequest('/admin/restaurants', { signal: options.signal })
 }
 
+export function updateAdminRestaurant(restaurantId, payload) {
+  return apiRequest(`/admin/restaurants/${restaurantId}`, {
+    method: 'PUT',
+    body: JSON.stringify(payload),
+  })
+}
+
 export function listAdminCategories(restaurantId, options = {}) {
   return apiRequest(`/admin/restaurants/${restaurantId}/categories`, {
     signal: options.signal,

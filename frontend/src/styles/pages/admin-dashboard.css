@@ -9,29 +9,29 @@
   --admin-muted: #7b6255;
   --admin-border: rgb(88 48 34 / 16%);
 
-  width: min(100% - (var(--space-4) * 2), 88rem);
+  width: min(100% - (var(--space-3) * 2), 82rem);
   min-height: 100vh;
   margin-inline: auto;
-  padding-block: var(--space-4) var(--space-8);
+  padding-block: var(--space-4) var(--space-7);
   color: var(--admin-text);
 }
 
 .dashboard-header {
   display: grid;
-  gap: var(--space-5);
+  gap: var(--space-4);
   align-items: start;
-  padding: var(--space-5);
+  padding: var(--space-4);
   border: 1px solid var(--admin-border);
-  border-radius: 1.5rem;
+  border-radius: 1.25rem;
   background:
-    radial-gradient(circle at 92% 18%, rgb(185 115 53 / 22%), transparent 12rem),
+    radial-gradient(circle at 92% 18%, rgb(185 115 53 / 16%), transparent 10rem),
     linear-gradient(135deg, #fffdfa, #f7e4d6);
-  box-shadow: 0 1rem 2.5rem rgb(42 26 20 / 8%);
+  box-shadow: 0 0.75rem 1.75rem rgb(42 26 20 / 7%);
 }
 
 .dashboard-header__brand {
   display: inline-flex;
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-3);
   color: var(--admin-primary);
   font-size: 0.8rem;
   font-weight: 900;
@@ -50,41 +50,43 @@
 }
 
 .dashboard-header h1 {
-  max-width: 10ch;
+  max-width: 14ch;
   margin-top: var(--space-2);
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(2.45rem, 12vw, 5rem);
-  line-height: 0.95;
+  font-size: clamp(2rem, 7vw, 3.45rem);
+  line-height: 1;
 }
 
 .dashboard-header__meta {
   max-width: 42rem;
-  margin-top: var(--space-4);
+  margin-top: var(--space-3);
   color: var(--admin-muted);
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 .dashboard-nav {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
+  align-items: center;
 }
 
 .dashboard-nav .button {
-  flex: 1 1 auto;
-  min-width: max-content;
+  flex: 1 1 calc(50% - var(--space-2));
+  min-width: 0;
+  padding-inline: var(--space-4);
 }
 
 .dashboard-grid {
   display: grid;
-  gap: var(--space-4);
-  margin-top: var(--space-5);
+  gap: var(--space-3);
+  margin-top: var(--space-4);
 }
 
 .dashboard-card {
   display: grid;
-  gap: var(--space-3);
-  padding: var(--space-5);
+  gap: var(--space-2);
+  padding: var(--space-4);
   border: 1px solid var(--admin-border);
   border-radius: 1.25rem;
   background: var(--admin-surface);
@@ -115,8 +117,8 @@
 
 .admin-workspace {
   display: grid;
-  gap: var(--space-5);
-  margin-top: var(--space-5);
+  gap: var(--space-4);
+  margin-top: var(--space-4);
 }
 
 .admin-sidebar,
@@ -130,13 +132,13 @@
 
 .admin-board {
   display: grid;
-  gap: var(--space-5);
+  gap: var(--space-4);
 }
 
 .admin-board__header {
   display: grid;
   gap: var(--space-3);
-  padding: var(--space-5);
+  padding: var(--space-4);
   border: 1px solid var(--admin-border);
   border-radius: 1.25rem;
   background: var(--admin-surface);
@@ -167,21 +169,22 @@
 
 @media (min-width: 48rem) {
   .dashboard-page {
-    width: min(100% - (var(--space-8) * 2), 88rem);
-    padding-block: var(--space-8);
+    width: min(100% - (var(--space-6) * 2), 82rem);
+    padding-block: var(--space-6) var(--space-8);
   }
 
   .dashboard-header {
     grid-template-columns: minmax(0, 1fr) auto;
-    padding: var(--space-7);
+    padding: var(--space-6);
   }
 
   .dashboard-nav {
     justify-content: flex-end;
+    max-width: 32rem;
   }
 
   .dashboard-nav .button {
-    flex: 0 0 auto;
+    flex: 0 1 auto;
   }
 
   .dashboard-grid {
@@ -201,7 +204,7 @@
 
 @media (min-width: 72rem) {
   .admin-workspace {
-    grid-template-columns: minmax(18rem, 22rem) minmax(0, 1fr);
+    grid-template-columns: minmax(17rem, 20rem) minmax(0, 1fr);
     align-items: start;
   }
 

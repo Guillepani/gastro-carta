@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import CategoryManager from './categories/CategoryManager.jsx'
 import DashboardSummary from './dashboard/DashboardSummary.jsx'
+import MenuThemeSelector from './dashboard/MenuThemeSelector.jsx'
 import ProductManager from './products/ProductManager.jsx'
 import SubcategoryManager from './subcategories/SubcategoryManager.jsx'
 
@@ -23,11 +24,13 @@ function DashboardShell({
   onStartEditCategory,
   onStartEditProduct,
   onStartEditSubcategory,
+  onUpdateMenuTheme,
   onUpdateCategory,
   onUpdateProduct,
   onUpdateSubcategory,
   products,
   restaurant,
+  restaurantFeedback,
   selectedCategory,
   selectedProduct,
   selectedSubcategory,
@@ -77,6 +80,14 @@ function DashboardShell({
         products={products}
         restaurant={restaurant}
         subcategories={subcategories}
+      />
+
+      <MenuThemeSelector
+        error={restaurantFeedback?.error}
+        isSaving={isSaving}
+        message={restaurantFeedback?.message}
+        onSelectTheme={onUpdateMenuTheme}
+        selectedTheme={restaurant?.menuTheme || 'classic'}
       />
 
       <div className="admin-workspace">

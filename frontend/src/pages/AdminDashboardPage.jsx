@@ -18,6 +18,7 @@ import {
   listAdminSubcategories,
   updateAdminCategory,
   updateAdminProduct,
+  updateAdminRestaurant,
   updateAdminSubcategory,
 } from '../services/adminService.js'
 import '../styles/pages/admin-dashboard.css'
@@ -26,6 +27,7 @@ import '../styles/components/admin-crud.css'
 const EMPTY_FEEDBACK = {
   categories: { error: '', message: '' },
   products: { error: '', message: '' },
+  restaurant: { error: '', message: '' },
   subcategories: { error: '', message: '' },
 }
 
@@ -294,6 +296,21 @@ function AdminDashboardPage() {
     })
   }
 
+  async function handleUpdateMenuTheme(menuTheme) {
+    if (!restaurant?.id) return false
+
+    return runMutation('restaurant', async () => {
+      await updateAdminRestaurant(restaurant.id, {
+        name: restaurant.name,
+        slug: restaurant.slug,
+        description: restaurant.description,
+        menuTheme,
+      })
+      await refreshSession()
+      setSectionFeedback('restaurant', { message: 'Estilo de carta actualizado.' })
+    })
+  }
+
   if (isLoading || isDataLoading) return <LoadingState message="Cargando panel..." />
 
   if (error) {
@@ -324,10 +341,12 @@ function AdminDashboardPage() {
       onEditProductCancel={() => setSelectedProduct(null)}
       onEditSubcategoryCancel={() => setSelectedSubcategory(null)}
       restaurant={restaurant}
+      restaurantFeedback={feedback.restaurant}
       onLogout={handleLogout}
       onStartEditCategory={setSelectedCategory}
       onStartEditProduct={setSelectedProduct}
       onStartEditSubcategory={setSelectedSubcategory}
+      onUpdateMenuTheme={handleUpdateMenuTheme}
       onUpdateCategory={handleUpdateCategory}
       onUpdateProduct={handleUpdateProduct}
       onUpdateSubcategory={handleUpdateSubcategory}

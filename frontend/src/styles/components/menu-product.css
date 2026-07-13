@@ -1,6 +1,6 @@
 .product-card {
   padding-bottom: var(--space-5);
-  border-bottom: 1px dashed color-mix(in srgb, var(--menu-border) 82%, transparent);
+  border-bottom: 1px dashed color-mix(in srgb, var(--menu-accent) 42%, var(--menu-border));
 }
 
 .product-card:last-child {
@@ -34,7 +34,7 @@
 .product-card__dots {
   display: none;
   min-width: 2rem;
-  border-bottom: 1px dotted color-mix(in srgb, var(--menu-muted) 55%, transparent);
+  border-bottom: 1px dotted color-mix(in srgb, var(--menu-accent) 62%, transparent);
   transform: translateY(-0.25rem);
 }
 

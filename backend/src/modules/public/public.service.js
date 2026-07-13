@@ -15,6 +15,7 @@ function mapRestaurant(row) {
     name: row.name,
     slug: row.slug,
     description: row.description,
+    menuTheme: row.menu_theme || 'classic',
   }
 }
 
@@ -42,7 +43,7 @@ function mapGlobalAllergen(row) {
 
 async function findPublicRestaurant(slug) {
   const result = await query(
-    `SELECT id, name, slug, description
+    `SELECT id, name, slug, description, menu_theme
      FROM restaurants
      WHERE slug = $1 AND is_active = true`,
     [slug],

@@ -22,6 +22,7 @@ function mapRestaurant(row) {
     address: row.address,
     phone: row.phone,
     email: row.email,
+    menuTheme: row.menu_theme || 'classic',
     isActive: row.is_active,
     createdAt: row.created_at,
     updatedAt: row.updated_at,
@@ -103,7 +104,7 @@ async function findOwnedRestaurant(db, adminUserId, restaurantId, lock = false) 
   validateId(restaurantId, 'restaurantId')
   const result = await db.query(
     `SELECT id, name, slug, description, address, phone, email,
-            is_active, created_at, updated_at
+            menu_theme, is_active, created_at, updated_at
      FROM restaurants
      WHERE id = $1 AND admin_user_id = $2
      ${lock ? 'FOR UPDATE' : ''}`,
@@ -266,7 +267,7 @@ function buildUpdateQuery(table, id, data, columns, returning) {
 export async function listRestaurants(adminUserId) {
   const result = await query(
     `SELECT id, name, slug, description, address, phone, email,
-            is_active, created_at, updated_at
+            menu_theme, is_active, created_at, updated_at
      FROM restaurants
      WHERE admin_user_id = $1
      ORDER BY created_at, name`,
@@ -288,9 +289,14 @@ export async function updateRestaurant(adminUserId, restaurantId, input) {
     'restaurants',
     restaurantId,
     data,
-    { name: 'name', slug: 'slug', description: 'description' },
+    {
+      name: 'name',
+      slug: 'slug',
+      description: 'description',
+      menuTheme: 'menu_theme',
+    },
     `id, name, slug, description, address, phone, email,
-     is_active, created_at, updated_at`,
+     menu_theme, is_active, created_at, updated_at`,
   )
   try {
     return mapRestaurant((await query(update.text, update.values)).rows[0])

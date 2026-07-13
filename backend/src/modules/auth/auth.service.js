@@ -38,6 +38,7 @@ function mapRestaurant(row) {
     address: row.address,
     phone: row.phone,
     email: row.email,
+    menuTheme: row.menu_theme || 'classic',
     isActive: row.is_active,
     createdAt: row.created_at,
     updatedAt: row.updated_at,
@@ -108,7 +109,7 @@ function translateUniqueViolation(error) {
 async function findRestaurantByAdminId(database, adminUserId) {
   const result = await database.query(
     `SELECT id, name, slug, description, address, phone, email,
-            is_active, created_at, updated_at
+            menu_theme, is_active, created_at, updated_at
      FROM restaurants
      WHERE admin_user_id = $1
      ORDER BY created_at
@@ -143,7 +144,7 @@ export async function registerAdmin(input) {
         `INSERT INTO restaurants (admin_user_id, name, slug, email)
          VALUES ($1, $2, $3, $4)
          RETURNING id, name, slug, description, address, phone, email,
-                   is_active, created_at, updated_at`,
+                   menu_theme, is_active, created_at, updated_at`,
         [admin.id, data.restaurantName, restaurantSlug, data.email],
       )
       const restaurant = restaurantResult.rows[0]

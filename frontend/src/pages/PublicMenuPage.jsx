@@ -27,6 +27,14 @@ function getRestaurantDetails(restaurant) {
   ].filter(Boolean)
 }
 
+const MENU_THEME_CLASSES = new Set([
+  'classic',
+  'warm',
+  'minimal',
+  'dark',
+  'fresh',
+])
+
 function PublicMenuPage() {
   const { slug } = useParams()
   const [searchParams] = useSearchParams()
@@ -87,10 +95,13 @@ function PublicMenuPage() {
 
   const hasProducts = visibleCategories.length > 0
   const restaurantDetails = getRestaurantDetails(menu.restaurant)
+  const menuTheme = MENU_THEME_CLASSES.has(menu.restaurant.menuTheme)
+    ? menu.restaurant.menuTheme
+    : 'classic'
 
   return (
     <main
-      className={`public-menu menu-theme-classic${isAdminPreview ? ' public-menu--preview' : ''}`}
+      className={`public-menu menu-theme-${menuTheme}${isAdminPreview ? ' public-menu--preview' : ''}`}
     >
       {isAdminPreview && (
         <aside className="menu-preview-bar" aria-label="Vista previa de administración">
